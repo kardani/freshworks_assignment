@@ -56,6 +56,7 @@ class IndexFragment : Fragment(), GiphsAdapter.ClickListener {
 
             binding.loading.visibility = if(it is DataState.Loading) View.VISIBLE else View.GONE
 
+
             if(it is DataState.Error){
                 binding.errorLayout.visibility = View.VISIBLE
                 binding.errorMessageTV.text = it.error
@@ -66,6 +67,8 @@ class IndexFragment : Fragment(), GiphsAdapter.ClickListener {
             if(it is DataState.Success) {
                 adapter.submitList(it.value)
             }
+
+            binding.giphsRV.visibility = if(it is DataState.Success) View.VISIBLE else View.GONE
 
         }
 

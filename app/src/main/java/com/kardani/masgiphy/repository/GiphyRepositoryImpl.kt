@@ -31,7 +31,15 @@ class GiphyRepositoryImpl(
                 ResultWrapper.NetworkError -> emit(DataState.Error("Network Error"))
                 is ResultWrapper.Success -> {
 
-                    emit(DataState.Success(response.value))
+                    emit(
+                        DataState.Success(
+                            response.value.map {
+
+                                it.copy(favorite = localDataSource.isFavorite(it))
+
+                            }
+                        )
+                    )
                 }
             }
 

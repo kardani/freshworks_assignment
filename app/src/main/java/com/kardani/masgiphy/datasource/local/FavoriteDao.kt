@@ -14,7 +14,7 @@ interface FavoriteDao {
     @Query("SELECT * FROM giph_entity")
     fun getAll() : Flow<List<GiphEntity>>
 
-    @Query("SELECT * FROM giph_entity WHERE id = :id")
+    @Query("SELECT * FROM giph_entity WHERE id = :id LIMIT 1")
     suspend fun getById(id: String) : GiphEntity?
 
     @Insert(onConflict = REPLACE)
