@@ -7,6 +7,6 @@ interface GiphyRemoteDataSource {
 
     suspend fun getTrendGifs(): ResultWrapper<List<Giph>>
 
-    suspend fun searchGifs(criteria: String): ResultWrapper<List<Giph>>
+    suspend fun searchGifs(query: String): ResultWrapper<List<Giph>>
 
 }

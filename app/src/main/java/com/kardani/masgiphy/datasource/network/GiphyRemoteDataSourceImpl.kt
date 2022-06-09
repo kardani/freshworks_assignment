@@ -13,7 +13,7 @@ class GiphyRemoteDataSourceImpl(
         return safeApiCall { endpoint.trendGifs().data?.mapToDomain() ?: listOf() }
     }
 
-    override suspend fun searchGifs(criteria: String): ResultWrapper<List<Giph>> {
-        return safeApiCall { endpoint.searchGifs(criteria).data?.mapToDomain() ?: listOf() }
+    override suspend fun searchGifs(query: String): ResultWrapper<List<Giph>> {
+        return safeApiCall { endpoint.searchGifs(query).data?.mapToDomain() ?: listOf() }
     }
 }

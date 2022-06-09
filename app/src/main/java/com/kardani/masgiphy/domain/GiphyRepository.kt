@@ -6,6 +6,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface GiphyRepository {
 
-    fun searchGifs(criteria: String): Flow<DataState<List<Giph>>>
+    fun getGiphs(query: String): Flow<DataState<List<Giph>>>
 
 }

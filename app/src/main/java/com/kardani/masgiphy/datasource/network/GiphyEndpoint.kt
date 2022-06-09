@@ -7,10 +7,10 @@ import retrofit2.http.Query
 
 interface GiphyEndpoint {
 
-    @GET("trending")
+    @GET("search")
     suspend fun searchGifs(@Query("q") query: String) : ListResponse
 
-    @GET("search")
+    @GET("trending")
     suspend fun trendGifs() : ListResponse
 
 }
