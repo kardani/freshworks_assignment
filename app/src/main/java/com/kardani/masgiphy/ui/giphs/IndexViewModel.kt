@@ -58,6 +58,14 @@ class IndexViewModel constructor(private val giphyRepository: GiphyRepository) :
                 giphyRepository.addToFavorite(giph.mapToDomain())
             }
 
+            if(giphs.value is DataState.Success){
+
+                val result = (giphs.value as DataState.Success<List<GiphUI>>).value.map { if(it.id == giph.id) it.copy(favorite = !giph.favorite) else it }
+
+                _giphs.emit(DataState.Success(result))
+            }
+
+
         }
     }
 
