@@ -40,3 +40,16 @@ fun Giph.mapToView() : GiphUI {
 }
 
 fun List<Giph>.mapToView() : List<GiphUI>  = this.map { it.mapToView() }
+
+
+
+fun GiphUI.mapToDomain() : Giph {
+    return Giph(
+        id = this.id,
+        url = this.url,
+        title = this.title,
+        previewUrl = this.previewUrl,
+        animatedUrl = this.animatedUrl,
+        favorite = this.favorite,
+    )
+}

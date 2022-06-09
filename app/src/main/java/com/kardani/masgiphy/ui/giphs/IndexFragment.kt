@@ -8,7 +8,7 @@ import com.kardani.masgiphy.R
 import com.kardani.masgiphy.core.DataState
 import com.kardani.masgiphy.databinding.IndexFragmentBinding
 import com.kardani.masgiphy.ui.model.GiphUI
-import com.kardani.masgiphy.ui.model.GiphsAdapter
+import com.kardani.masgiphy.ui.GiphsAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class IndexFragment : Fragment(), GiphsAdapter.ClickListener {
@@ -76,7 +76,7 @@ class IndexFragment : Fragment(), GiphsAdapter.ClickListener {
     }
 
     override fun onFavoriteClicked(item: GiphUI) {
-        // TODO("Not yet implemented")
+        viewModel.toggleFavorite(item)
     }
 
 }

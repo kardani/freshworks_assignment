@@ -1,5 +1,6 @@
-package com.kardani.masgiphy.ui.model
+package com.kardani.masgiphy.ui
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kardani.masgiphy.databinding.GiphyListItemBinding
+import com.kardani.masgiphy.ui.model.GiphUI
 
 class GiphsAdapter constructor(private val clickListener: ClickListener?) : ListAdapter<GiphUI, GiphsAdapter.ViewHolder>(
     DiffCallBack()
@@ -30,6 +32,10 @@ class GiphsAdapter constructor(private val clickListener: ClickListener?) : List
             Glide.with(this.itemView)
                 .load(model.animatedUrl)
                 .into(binding.gifImg)
+
+            binding.favoriteImage.setColorFilter(if(model.favorite) Color.RED else Color.BLACK)
+
+            binding.favoriteImage.alpha = if(model.favorite) 0.8f else 0.5f
 
             binding.favoriteImage.setOnClickListener {
                 clickListener?.onFavoriteClicked(model)

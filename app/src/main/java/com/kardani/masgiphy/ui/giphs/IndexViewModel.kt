@@ -4,6 +4,7 @@ import androidx.lifecycle.*
 import com.kardani.masgiphy.core.DataState
 import com.kardani.masgiphy.domain.GiphyRepository
 import com.kardani.masgiphy.ui.model.GiphUI
+import com.kardani.masgiphy.ui.model.mapToDomain
 import com.kardani.masgiphy.ui.model.mapToView
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
@@ -47,9 +48,17 @@ class IndexViewModel constructor(private val giphyRepository: GiphyRepository) :
 
     }
 
+    fun toggleFavorite(giph: GiphUI){
 
-    override fun onCleared() {
-        super.onCleared()
+        viewModelScope.launch {
+
+            if(giph.favorite){
+                giphyRepository.removeFromFavorite(giph.mapToDomain())
+            }else{
+                giphyRepository.addToFavorite(giph.mapToDomain())
+            }
+
+        }
     }
 
 }

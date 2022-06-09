@@ -2,6 +2,7 @@ package com.kardani.masgiphy
 
 import android.app.Application
 import com.kardani.masgiphy.di.appModule
+import com.kardani.masgiphy.di.localPersistenceModule
 import com.kardani.masgiphy.di.networkModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -25,6 +26,7 @@ class App : Application() {
                 listOf(
                     appModule,
                     networkModule,
+                    localPersistenceModule
                 )
             )
         }
