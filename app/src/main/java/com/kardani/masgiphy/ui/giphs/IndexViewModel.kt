@@ -11,8 +11,6 @@ import kotlinx.coroutines.flow.*
 @OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
 class IndexViewModel constructor(private val giphyRepository: GiphyRepository) : ViewModel() {
 
-    private var giphyLoaderJob: Job? = null
-
     private val searchQuery = MutableStateFlow("")
 
     private val _giphs = MutableStateFlow<DataState<List<GiphUI>>>(DataState.Loading)
